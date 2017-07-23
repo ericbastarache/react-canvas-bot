@@ -6,6 +6,7 @@ import Oval from '../components/Oval/Oval';
 import Rectangle from '../components/Rectangle/Rectangle';
 import Brush from '../components/Brush/Brush';
 import ColorPicker from '../components/ColorPicker/ColorPicker';
+import Eraser from '../components/Eraser/Eraser';
 
 import FontAwesome from 'react-fontawesome';
 
@@ -46,6 +47,25 @@ class CanvasContainer extends Component {
     this.setState({
       drawing: true
     });
+
+    if(this.state.rectActive === true) {
+      let rectContext = this.state.ctx;
+      rectContext.fillStyle = this.state.colorVal;
+      this.setState({
+        ctx: rectContext
+      });
+      rectContext.fillRect(this.state.lastX, this.state.lastY, 300, 100);
+    }
+
+    if(this.state.ovalActive === true) {
+      let circleContext = this.state.ctx;
+      circleContext.fillStyle = this.state.colorVal;
+      this.setState({
+        ctx: circleContext
+      });
+      circleContext.arc(this.state.lastX, this.state.lastY, 100, 0, 2*Math.PI);
+      circleContext.fill();
+    }
   }
 
   onMouseUp = (e) => {
@@ -134,7 +154,9 @@ class CanvasContainer extends Component {
     console.log(imgUrl);
   }
 
-  clearCanvas = (e) => {
+  eraseCanvas = () => {
+    const eraseContext = this.state.ctx;
+    eraseContext.clearRect(0, 0, this.state.canvas.width, this.state.canvas.height);
 
   }
 
@@ -163,6 +185,9 @@ class CanvasContainer extends Component {
                 <Row>
                   <Col md={1}>
                     <Button value={this.state.brushActive} onClick={this.setBrushActive}><FontAwesome name='paint-brush' /></Button>
+                  </Col>
+                  <Col md={1}>
+                    <Eraser eraseCanvas={this.eraseCanvas}/>
                   </Col>
                   <Col md={1}>
                     <Line setLineActive={this.setLineActive} lineActive={this.state.lineActive}/>
