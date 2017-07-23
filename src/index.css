@@ -7,3 +7,8 @@ body {
 canvas {
   border: 1px solid #cdcdcd;
 }
+
+button {
+  margin: 0px 5px 20px 0px;
+  margin-right: 5px;
+}
