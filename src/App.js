@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import LayoutContainer from './containers/LayoutContainer';
+import CanvasContainer from './containers/CanvasContainer';
 import Header from './components/Header/Header';
 
 class App extends Component {
@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div>
         <Header headertext="React Canvas Slack Bot"/>
-        <LayoutContainer />
+        <CanvasContainer />
       </div>
     );
   }
