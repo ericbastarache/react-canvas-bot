@@ -7,6 +7,8 @@ import Rectangle from '../components/Rectangle/Rectangle';
 import Brush from '../components/Brush/Brush';
 import ColorPicker from '../components/ColorPicker/ColorPicker';
 
+import FontAwesome from 'react-fontawesome';
+
 class CanvasContainer extends Component {
 
   constructor(props) {
@@ -93,7 +95,7 @@ class CanvasContainer extends Component {
 
   setLineActive = (e) => {
     this.setState({
-      lineActive: true,
+      lineActive: !this.state.lineActive,
       rectActive: false,
       ovalActive: false,
       brushActive: false
@@ -102,7 +104,7 @@ class CanvasContainer extends Component {
 
   setOvalActive = (e) => {
     this.setState({
-      ovalActive: true,
+      ovalActive: !this.state.ovalActive,
       lineActive: false,
       brushActive: false,
       rectActive: false
@@ -111,11 +113,20 @@ class CanvasContainer extends Component {
 
   setRectangleActive = (e) => {
     this.setState({
-      rectActive: true,
+      rectActive: !this.state.rectActive,
       ovalActive: false,
       lineActive: false,
       brushActive: false
     });
+  }
+
+  setBrushActive = (e) => {
+    this.setState({
+      brushActive: !this.state.brushActive,
+      rectActive: false,
+      ovalActive: false,
+      lineActive: false
+    })
   }
 
   processImage = (e) => {
@@ -124,7 +135,7 @@ class CanvasContainer extends Component {
   }
 
   clearCanvas = (e) => {
-    
+
   }
 
   render () {
@@ -142,7 +153,7 @@ class CanvasContainer extends Component {
               <Panel header="Toolbox">
                 <Row>
                   <Col md={6}>
-                    <Brush brushSizeChange={this.handleBrushSizeChange} lineWidth={this.state.lineWidth}/>
+                    {this.state.brushActive === true ? <Brush brushSizeChange={this.handleBrushSizeChange} lineWidth={this.state.lineWidth}/> : ''}
                   </Col>
                   <Col md={6}>
                     <ColorPicker changeColor={this.handleColorChange} colorVal={this.state.colorVal}/>
@@ -151,10 +162,13 @@ class CanvasContainer extends Component {
                 <hr />
                 <Row>
                   <Col md={1}>
+                    <Button value={this.state.brushActive} onClick={this.setBrushActive}><FontAwesome name='paint-brush' /></Button>
+                  </Col>
+                  <Col md={1}>
                     <Line setLineActive={this.setLineActive} lineActive={this.state.lineActive}/>
                   </Col>
                   <Col md={1}>
-                    <Oval setOvalActive={this.setovalActive} ovalActive={this.state.ovalActive}/>
+                    <Oval setOvalActive={this.setOvalActive} ovalActive={this.state.ovalActive}/>
                   </Col>
                   <Col md={1}>
                     <Rectangle setRectActive={this.setRectangleActive} rectActive={this.state.rectActive}/>
