@@ -1,6 +1,6 @@
 ## React Canvas Slack Bot - An interactive drawing app that pushes your final drawing to Slack!
 
-#How it works
+# How it works
 
 1. You open up the app (conveniently available for Windows, Mac, or on the web!)
 2. Start drawing!
