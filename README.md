@@ -16,4 +16,3 @@
 - React Bootstrap
 - React FontAwesome
 
-With inspiration from https://github.com/the-heap/penny
