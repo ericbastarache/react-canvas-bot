@@ -8,7 +8,7 @@
 4. Your image gets processed, and is then sent to a Slack channel you desire
 5. Let everyone marvel at your creation!
 
-#Built with
+# Built with
 
 - React
 - React Bootstrap
