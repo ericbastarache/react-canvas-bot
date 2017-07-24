@@ -185,19 +185,19 @@ class CanvasContainer extends Component {
                 </Row>
                 <hr />
                 <Row>
-                  <Col md={1}>
+                  <Col md={2}>
                     <Button value={this.state.brushActive} onClick={this.setBrushActive}><FontAwesome name='paint-brush' /></Button>
                   </Col>
-                  <Col md={1}>
+                  <Col md={2}>
                     <Eraser eraseCanvas={this.eraseCanvas}/>
                   </Col>
-                  <Col md={1}>
+                  <Col md={2}>
                     <Line setLineActive={this.setLineActive} lineActive={this.state.lineActive}/>
                   </Col>
-                  <Col md={1}>
+                  <Col md={2}>
                     <Oval setOvalActive={this.setOvalActive} ovalActive={this.state.ovalActive}/>
                   </Col>
-                  <Col md={1}>
+                  <Col md={2}>
                     <Rectangle setRectActive={this.setRectangleActive} rectActive={this.state.rectActive}/>
                   </Col>
                 </Row>
