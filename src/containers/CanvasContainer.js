@@ -76,17 +76,19 @@ class CanvasContainer extends Component {
 
   onMouseMove = (e) => {
     if(this.state.drawing) {
-      const rect = this.state.canvas.getBoundingClientRect();
-      const lastX = this.state.lastX;
-      const lastY = this.state.lastY;
-      let currentX = e.clientX - rect.left;
-      let currentY = e.clientY - rect.top;
+      if(this.state.brushActive) {
+        const rect = this.state.canvas.getBoundingClientRect();
+        const lastX = this.state.lastX;
+        const lastY = this.state.lastY;
+        let currentX = e.clientX - rect.left;
+        let currentY = e.clientY - rect.top;
 
-      this.draw(lastX, lastY, currentX, currentY);
-      this.setState({
-        lastX: currentX,
-        lastY: currentY
-      });
+        this.draw(lastX, lastY, currentX, currentY);
+        this.setState({
+          lastX: currentX,
+          lastY: currentY
+        });
+      }
     }
   }
 
