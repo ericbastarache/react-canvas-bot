@@ -11,8 +11,6 @@
 #Built with
 
 - React
-- Node
-- Koa
 - React Bootstrap
 - React FontAwesome
 
